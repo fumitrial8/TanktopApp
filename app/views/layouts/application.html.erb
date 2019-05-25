@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>TanktopApp</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <header>
+      <div class="header-menu">
+
+      <ul>
+        <li><%= link_to("TOP","/") %></li>
+        <li><%= link_to("ABOUT","/about") %></li>
+        <li><%= link_to("BRANDS","/posts/index") %></li>
+        <li><%= link_to("NEW POST","/posts/new") %></li>
+      </ul>
+      <div class="clear"></div>
+    </div>
+
+    </header>
+    <% if flash[:notice] %>
+    <h1><%= flash[:notice] %></h1>
+    <% end %>
+    <li><%= link_to("destroy","/users/destroy_form") %></li>
+    <li><%= link_to("USER","/users/index") %></li>
+    <% if @current_user %>
+    <li><%= link_to("LOGOUT","/users/logout",{method: "post"}) %></li>
+    <li><%= link_to("MY POSTS","/posts/#{@current_user.id}/my_posts") %></li>
+    <li><%= link_to("EDIT PROFILE","/users/#{@current_user.id}/edit") %></li>
+    <%= @current_user.name %>
+    <% else %>
+    <li><%= link_to("LOGIN","/users/login_form") %></li>
+    <li><%= link_to("RESISTER","/users/new") %></li>
+    <% end %>
+    <%= yield %>
+
+  </body>
+</html>

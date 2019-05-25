@@ -1,0 +1,9 @@
+<% @users.each do |user| %>
+  <div class="posts-index-item">
+    <%= user.id %>
+    <%= user.name %>
+    <%= user.email %>
+    <%= user.country %>
+    <%= user.password %>
+  </div>
+<% end %>

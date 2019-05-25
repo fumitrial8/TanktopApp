@@ -1,0 +1,9 @@
+<%= form_tag ("/users/#{@current_user.id}/update") do %>
+  <h1>User Name</h1>
+  <textarea name="name"><%= @current_user.name %></textarea>
+  <h1>E-Mail</h1>
+  <textarea name="email"><%= @current_user.email %></textarea>
+  <h1>Your Country</h1>
+  <textarea name="country"><%= @current_user.country %></textarea>
+  <input type="submit" value="SUBMIT">
+<% end %>

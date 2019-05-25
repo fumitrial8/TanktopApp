@@ -1,0 +1,10 @@
+<h1>BRAND</h1>
+<% if @post.user_id == @current_user.id %>
+
+  <%= @post.id %>
+  <%= @post.brand %>
+  <%= link_to("Edit", "/posts/#{@post.id}/edit") %>
+<% else %>
+  <%= @post.id %>
+  <%= @post.brand %>
+<% end %>

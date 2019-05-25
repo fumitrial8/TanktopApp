@@ -1,0 +1,12 @@
+<%= form_tag ("/users/create") do %>
+  <h1>User Name</h1>
+  <textarea name="name"></textarea>
+  <h1>E-Mail</h1>
+  <textarea name="email"></textarea>
+  <h1>Your Country</h1>
+  <textarea name="country"></textarea>
+#country_select("user","country")
+  <h1>Password</h1>
+  <textarea name="password"></textarea>
+  <input type="submit" value="SUBMIT">
+<% end %>

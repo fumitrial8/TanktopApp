@@ -1,0 +1,7 @@
+<%= form_tag ("/posts/#{@post.id}/update") do %>
+<h1>BRAND</h1>
+  <textarea name="brand"><%= @post.brand %></textarea>
+
+  <input type="submit" value="SUBMIT">
+<% end %>
+<%= link_to( "Destroy", "/posts/#{@post.id}/destroy",{ method: "post"}) %>

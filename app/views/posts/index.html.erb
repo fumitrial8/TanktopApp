@@ -1,0 +1,7 @@
+<% @posts.each do |post| %>
+  <div class="posts-index-item">
+    <%= post.id %>
+    <%= link_to(post.brand, "#{post.id}") %>
+    <%= post.user_id %>
+  </div>
+<% end %>
