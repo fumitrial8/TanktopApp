@@ -20,6 +20,8 @@ Rails.application.routes.draw do
   get "posts/:id/my_posts" => "posts#my_posts"
   post "posts/create" => "posts#create"
   post "posts/:id/update" =>"posts#update"
+  post "posts/:id/like" => "likes#like"
+  post "posts/:id/unlike" => "likes#unlike"
   get '/' => 'home#top'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   get "/about" => "home#about"

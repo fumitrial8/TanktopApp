@@ -2,6 +2,7 @@ class PostsController < ApplicationController
   before_action :ensure_correct_user, {only: [:edit, :update, :destroy, :my_posts]}
   def index
     @posts = Post.all
+    @likes = Like.all
   end
 
   def my_posts
@@ -35,7 +36,8 @@ class PostsController < ApplicationController
 
   def create
     @post = Post.new(brand: params[:brand], user_id: @current_user.id)
-    if @post.save
+    @brand = Brand.new(brand: params[:brand], user_id: @current_user.id)
+    if @post.save && @brand.save
       redirect_to("/posts/index")
     else
       render("posts/new")
@@ -47,8 +49,8 @@ class PostsController < ApplicationController
   end
 
   def ensure_correct_user
-    @post = Post.find_by(id: params[:id])
-    if @current_user.id != @post.user_id
+    @user = User.find_by(id: params[:id])
+    if @current_user.id != @user.id
       redirect_to("/posts/index")
       flash[:notice] = "NOOOOOOOOO"
     end

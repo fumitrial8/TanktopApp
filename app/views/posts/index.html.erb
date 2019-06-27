@@ -3,5 +3,11 @@
     <%= post.id %>
     <%= link_to(post.brand, "#{post.id}") %>
     <%= post.user_id %>
+    <% if @current_user.id != @likes.find_by(post_id: post.id, like_user_id: @current_user.id) %>
+      <%= link_to("Like", "#{post.id}/like", :method => "post") %>
+    <% else %>
+      <%= link_to("Unlike", "#{post.id}/unlike", :method => "post") %>
+    <% end %>
+    <%= @likes.where(post_id: post.id).count %>
   </div>
 <% end %>

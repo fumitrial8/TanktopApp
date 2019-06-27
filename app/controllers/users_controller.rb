@@ -26,9 +26,10 @@ class UsersController < ApplicationController
   end
 
   def login
-    @user = User.find_by(email: params[:email], password: params[:password])
-    if @user
+    @user = User.find_by(email: params[:email])
+    if @user && @user.authenticate(params[:password])
       session[:name] = @user.name
+      session[:id] = @user.id
       redirect_to("/users/index")
     else
       render("users/login_form")
@@ -50,6 +51,7 @@ class UsersController < ApplicationController
 
   def logout
     session[:name] = nil
+    session[:id] =nil
     redirect_to("/users/login_form")
   end
   def create
